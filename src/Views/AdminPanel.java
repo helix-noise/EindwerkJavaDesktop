@@ -14,14 +14,14 @@ import javax.swing.JOptionPane;
  *
  * @author Helix
  */
-public class AdminPanel extends javax.swing.JFrame {
+public final class AdminPanel extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminPanel
      */
     public AdminPanel() {
         initComponents();
-        VulListBox();
+        vulListBox();
     }
 
     /**
@@ -123,6 +123,7 @@ public class AdminPanel extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFilmToevoegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilmToevoegenActionPerformed
@@ -147,8 +148,8 @@ public class AdminPanel extends javax.swing.JFrame {
             int option = JOptionPane.showConfirmDialog(null, "Wilt u deze film zeker verwijderen ?", "Verwijderen", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
                 Film f = (Film) lsbFilmLijst.getSelectedValue();
-                FilmBewerking.FilmVerwijderen(f);
-                VulListBox();
+                FilmBewerking.filmVerwijderen(f);
+                vulListBox();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Gelieve een film te selecteren !", "Selectie", JOptionPane.OK_OPTION);
@@ -190,8 +191,8 @@ public class AdminPanel extends javax.swing.JFrame {
         });
     }
 
-    public void VulListBox() {
-        lsbFilmLijst.setListData(FilmBewerking.FilmLijst().toArray());
+    public void vulListBox() {
+        lsbFilmLijst.setListData(FilmBewerking.filmLijst().toArray());
         lblAantalInList.setText(String.valueOf(lsbFilmLijst.getModel().getSize()));
     }
 

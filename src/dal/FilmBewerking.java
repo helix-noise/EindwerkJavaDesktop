@@ -20,11 +20,11 @@ import javax.swing.JOptionPane;
  */
 public class FilmBewerking {
 
-    private static final String ConnString = "jdbc:mysql://localhost:3307/eindwerkfilmshopdb?zeroDateTimeBehavior=convertToNull";
+    private static final String _connString = "jdbc:mysql://localhost:3307/eindwerkfilmshopdb?zeroDateTimeBehavior=convertToNull";
 
-    public static void FilmToevoegen(Film film) {
+    public static void filmToevoegen(Film film) {
         try {
-            Connection Conn = DriverManager.getConnection(ConnString, "root", "usbw");
+            Connection Conn = DriverManager.getConnection(_connString, "root", "usbw");
             Statement stmt = Conn.createStatement();
             stmt.executeUpdate("INSERT INTO FILM (Naam,Beschrijving,Genre,Foto,Prijs) VALUES ('" + film.getNaam() + "','" + film.getBeschrijving() + "','" + film.getGenre() + "','" + film.getFoto() + "'," + film.getPrijs() + ")");
         } catch (Exception e) {
@@ -32,9 +32,9 @@ public class FilmBewerking {
         }
     }
 
-    public static void FilmWijzigen(Film f) {
+    public static void filmWijzigen(Film f) {
         try {
-            Connection Conn = DriverManager.getConnection(ConnString, "root", "usbw");
+            Connection Conn = DriverManager.getConnection(_connString, "root", "usbw");
             Statement stmt = Conn.createStatement();
             stmt.executeUpdate("UPDATE FILM SET Naam = '" + f.getNaam() + "', Beschrijving = '" + f.getBeschrijving() + "', Genre = '" + f.getGenre() + "', Foto = '" + f.getFoto() + "', Prijs = " + f.getPrijs() + " WHERE ID = " + f.getId() + " ");
         } catch (Exception e) {
@@ -42,9 +42,9 @@ public class FilmBewerking {
         }
     }
 
-    public static void FilmVerwijderen(Film f) {
+    public static void filmVerwijderen(Film f) {
         try {
-            Connection Conn = DriverManager.getConnection(ConnString, "root", "usbw");
+            Connection Conn = DriverManager.getConnection(_connString, "root", "usbw");
             Statement stmt = Conn.createStatement();
             stmt.executeUpdate("DELETE FROM FILM WHERE ID = " + f.getId());
         } catch (Exception e) {
@@ -52,10 +52,10 @@ public class FilmBewerking {
         }
     }
 
-    public static List<Film> FilmLijst() {
+    public static List<Film> filmLijst() {
         List<Film> filmLijst = new ArrayList<>();
         try {
-            Connection Conn = DriverManager.getConnection(ConnString,"root","usbw");
+            Connection Conn = DriverManager.getConnection(_connString,"root","usbw");
             Statement stmt = Conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM FILM ORDER BY Naam");
             while (rs.next()) {                

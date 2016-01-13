@@ -15,29 +15,29 @@ import javax.swing.JOptionPane;
  */
 public class FilmToevoegen extends javax.swing.JFrame {
 
-    private AdminPanel APanel;
-    private Film tempFilm;
+    private AdminPanel _aPanel;
+    private Film _tempFilm;
 
     /**
      * Creates new form FilmToevoegen
      *
      *
-     * @param k
+     * @param a
      */
-    public FilmToevoegen(AdminPanel k) {
+    public FilmToevoegen(AdminPanel a) {
         initComponents();
-        this.APanel = k;
+        this._aPanel = a;
     }
 
-    public FilmToevoegen(AdminPanel k, Film f) {
+    public FilmToevoegen(AdminPanel a, Film f) {
         initComponents();
-        this.APanel = k;
+        this._aPanel = a;
         txtNaam.setText(f.getNaam());
         txtBeschrijving.setText(f.getBeschrijving());
         cbGenre.setSelectedItem(f.getGenre());
         txtFoto.setText(f.getFoto());
         txtPrijs.setText(Double.toString(f.getPrijs()));
-        tempFilm = f;
+        _tempFilm = f;
     }
 
     /**
@@ -174,20 +174,21 @@ public class FilmToevoegen extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOpslaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpslaanActionPerformed
 
         if (txtNaam.getText().isEmpty() || txtBeschrijving.getText().isEmpty() || txtPrijs.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Gelieve alle velden in te vullen!");
-        } else if (tempFilm != null) {
-            FilmBewerken();
+        } else if (_tempFilm != null) {
+            filmBewerken();
         } else {
-            NieuweFilmToevoegen();
+            nieuweFilmToevoegen();
         }
     }//GEN-LAST:event_btnOpslaanActionPerformed
 
-    private void NieuweFilmToevoegen() {
+    private void nieuweFilmToevoegen() {
         Film f = new Film();
         f.setNaam(txtNaam.getText());
         f.setBeschrijving(txtBeschrijving.getText());
@@ -199,12 +200,12 @@ public class FilmToevoegen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gelieve een getal in te geven!");
             return;
         }
-        FilmBewerking.FilmToevoegen(f);
-        APanel.VulListBox();
+        FilmBewerking.filmToevoegen(f);
+        _aPanel.vulListBox();
         dispose();
     }
 
-    private void FilmBewerken() {
+    private void filmBewerken() {
         Film f = new Film();
         f.setNaam(txtNaam.getText());
         f.setBeschrijving(txtBeschrijving.getText());
@@ -216,9 +217,9 @@ public class FilmToevoegen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gelieve een getal in te geven!");
             return;
         }
-        f.setId(tempFilm.getId());
-        FilmBewerking.FilmWijzigen(f);
-        APanel.VulListBox();
+        f.setId(_tempFilm.getId());
+        FilmBewerking.filmWijzigen(f);
+        _aPanel.vulListBox();
         dispose();
     }
 

@@ -21,11 +21,11 @@ public class Film implements Serializable {
     public Film() {
     }
     
-    private String Genre;
-    private String Beschrijving;
-    private String Naam;
-    private String Foto;
-    private double Prijs;
+    private String genre;
+    private String beschrijving;
+    private String naam;
+    private String foto;
+    private double prijs;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,77 +42,77 @@ public class Film implements Serializable {
 
     @Override
     public String toString() {
-        return Naam;
+        return naam;
     }
 
     /**
      * @return the Naam
      */
     public String getNaam() {
-        return Naam;
+        return naam;
     }
 
     /**
      * @param Naam the Naam to set
      */
     public void setNaam(String Naam) {
-        this.Naam = Naam;
+        this.naam = Naam;
     }
 
     /**
      * @return the Foto
      */
     public String getFoto() {
-        return Foto;
+        return foto;
     }
 
     /**
      * @param Foto the Foto to set
      */
     public void setFoto(String Foto) {
-        this.Foto = Foto;
+        this.foto = Foto;
     }
 
     /**
      * @return the Prijs
      */
     public double getPrijs() {
-        return Prijs;
+        return prijs;
     }
 
     /**
      * @param Prijs the Prijs to set
      */
     public void setPrijs(double Prijs) {
-        this.Prijs = Prijs;
+        this.prijs = Prijs;
     }
 
     /**
      * @return the Beschrijving
      */
     public String getBeschrijving() {
-        return Beschrijving;
+        return beschrijving;
     }
 
     /**
      * @param Beschrijving the Beschrijving to set
      */
     public void setBeschrijving(String Beschrijving) {
-        this.Beschrijving = Beschrijving;
+        this.beschrijving = Beschrijving;
     }
 
     /**
      * @return the Genre
      */
     public String getGenre() {
-        return Genre;
+        return genre;
     }
 
     /**
      * @param Genre the Genre to set
      */
     public void setGenre(String Genre) {
-        this.Genre = Genre;
+        this.genre = Genre;
     }
     
 }
